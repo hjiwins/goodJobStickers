@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&family=Poor+Story&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/public/styles.css">
+    <title>GoodJob stickers!</title>
+</head>
+
+<body>
+    <div class="create-menu">
+        <h1>잘했어요👍스티커</h1>
+        <!-- <img src="/images/Goodjoblogo.png" alt="logo"> -->
+        <form action="" class="setup">
+            <label for="goal">스티커를 다 모으면...</label>
+            <input class="goal" type="text" placeholder="" />
+            <label for="amount">목표 스티커 갯수(5~30개)</label>
+            <button class="up" value="up">+</button>
+            <input class="amount" type="number" value="15" min="5" max="30" />
+            <button class="down" value="down">-</button>
+            <label for="password">비밀번호 (부모님용, 최대 4자)</label>
+            <input class="password" type="password" maxlength="4">
+            <button class="start-btn" type="submit">Start ⏎</button>
+        </form>
+    </div>
+
+    <div id="board-wrap">
+        <div class="menu-buttons"></div>
+        <div class="new-stickers"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,191 @@
+/* Hide input arrows */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+
+:root {
+    --title-font: 'Poor Story', cursive;
+    --main-font: 'Raleway', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--title-font);
+    /* overflow: hidden; */
+}
+
+body {
+    display: flex;
+    place-items: center;
+    justify-content: center;
+    background-image: url("/images/background-blue.png");
+    background-size: 50%;
+}
+
+label {
+    display: block;
+    font-size: 1.5rem;
+    margin-top: 3%;
+}
+
+input {
+    font-size: 1.5rem;
+    border-style: none;
+    text-align: center;
+    padding: 5px;
+    border-bottom: rgb(32, 196, 141) 5px dotted;
+}
+
+form {
+    min-width: 300px;
+    box-shadow: 5px 10px 10px rgba(53, 69, 94, 0.5);
+    padding: 5%;
+    border-radius: 15px;
+    background-color: rgb(233, 255, 255);
+}
+
+/* class */
+.create-menu {
+    position: absolute;
+    width: 50%;
+    display: flex;
+    transition: all .5s ease-in-out;
+    text-align: center;
+    flex-direction: column;
+}
+
+.create-menu h1 {
+    color:rgb(55, 87, 109);
+    font-family: var(--title-font);
+}
+
+.start-btn {
+    display: block;
+    border-style: none;
+    border-radius: 10px;
+    padding: 0.5rem;
+    background-color: #8BC6EC;
+    background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);    
+    font-size: 1.5rem;
+    font-weight: bolder;
+    color:rgb(48, 73, 155);
+    margin-top: 2rem;
+}
+
+.create-menu h1 {
+    font-size: 3rem;
+    padding: 5% 2%;
+}
+
+#board-wrap {
+    display: flex;
+    justify-content: center;
+    place-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(6, 4rem);
+    grid-template-rows: repeat(7, 4rem);
+}
+
+#board-wrap img {
+    position: absolute;
+    z-index: 0;
+    width: 800px;
+}
+
+.holder {
+    width: 4rem;
+    height: 4rem;
+    background-color: rgb(217, 180, 246);
+    border-radius: 50%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    place-items: center;
+    z-index: 1;
+}
+
+.addBtn {
+    background-color: rgb(216, 91, 154);
+    border-style: none;
+    font-size: 2rem;
+    padding: 1rem;
+    border-radius: 25px;
+    color: oldlace;
+    cursor: pointer;
+}
+
+.returnBtn {
+    background-color: rgb(82, 105, 180);
+    border-style: none;
+    font-size: 2rem;
+    padding: 1rem;
+    border-radius: 25px;
+    color: oldlace;
+    cursor: pointer;
+}
+
+.menu-buttons {
+    position: absolute;
+    top: 5%;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    place-items: center;
+}
+
+.new-stickers img {
+    width: 4rem;
+    height: 4rem;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.new-stickers{
+    position: absolute;
+    top: 10vh;
+    z-index: 5;
+}
+
+.amount {
+    background-color: rgb(159, 233, 233);
+    border-radius: 25px;
+    padding: 1rem;
+    font-size: 2rem;
+    box-shadow: 5px 5px 5px rgba(147, 169, 206, 0.5);
+}
+
+.up {
+    color:rgb(255, 255, 255);
+    font-size: 2rem;
+    background-color: rgb(245, 120, 62);
+    padding: 0 10px;
+    border-radius: 50%;
+    border-style: none;
+    box-shadow: 5px 5px 5px rgba(147, 169, 206, 0.5);
+}
+
+.down {
+    color: rgb(255, 255, 255);;
+    font-size: 2rem;
+    background-color: rgb(114, 146, 250);
+    padding: 0 10px;
+    border-radius: 50%;
+    border-style: none;
+    box-shadow: 5px 5px 5px rgba(147, 169, 206, 0.5);
+}
