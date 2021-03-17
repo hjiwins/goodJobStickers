@@ -39,15 +39,8 @@ label {
     margin-top: 3%;
 }
 
-input {
-    font-size: 1.5rem;
-    border-style: none;
-    text-align: center;
-    padding: 5px;
-    border-bottom: rgb(32, 196, 141) 5px dotted;
-}
-
-form {
+/* class */
+.setup {
     min-width: 300px;
     box-shadow: 5px 10px 10px rgba(53, 69, 94, 0.5);
     padding: 5%;
@@ -55,7 +48,14 @@ form {
     background-color: rgb(233, 255, 255);
 }
 
-/* class */
+.setup input {
+    font-size: 1.5rem;
+    border-style: none;
+    text-align: center;
+    padding: 5px;
+    border-bottom: rgb(32, 196, 141) 5px dotted;
+}
+
 .create-menu {
     position: absolute;
     width: 50%;
@@ -188,4 +188,30 @@ form {
     border-radius: 50%;
     border-style: none;
     box-shadow: 5px 5px 5px rgba(147, 169, 206, 0.5);
+}
+
+.get-password {
+    position: absolute;
+    top: 15vh;
+    left: 0;
+    z-index: 10;
+    text-align: center;
+    background-color: rgb(245, 202, 92);
+    width: 30%;
+    border-radius: 15px;
+    padding: 2%;
+    transform: translateX(-500px);
+    transition: all ease .5s;
+}
+
+.get-password input {
+    border: 0;
+    font-size: 1rem;
+}
+
+.get-password button {
+    border: 0;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgb(30, 200, 149);
 }

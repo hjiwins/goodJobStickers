@@ -1,6 +1,11 @@
-//holder = sticker holder (empty)
+//User Input data
 let stickerHolders = 0;
-const userPassword = [];
+let userPassword = "";
+let checkPassword = "";
+let userGoal = "";
+
+const boardWrap = document.getElementById("board-wrap");
+boardWrap.style.visibility = "hidden";
 
 //Random placeholder examples for wish(goal) input
 function makeAWish() {
@@ -50,39 +55,40 @@ function numberUpDown(e) {
   }
 }
 
-//Password checker
-const passwordInput = document.querySelector(".password");
-passwordInput.addEventListener("submit", (e) => {
-  console.log(e);
-});
-
 //get the values from user's input (value : goal & total sticker holders)
 const submitBtn = document.querySelector(".setup");
-submitBtn.addEventListener("submit", (e) => {
-  makeBoard(e);
-});
-
-function makeBoard(submitData) {
+submitBtn.addEventListener("submit", (submitData) => {
   submitData.preventDefault();
-  console.log(submitData);
+  //1. Save form data
   const userData = {
     goal: submitData.target[0].value,
     count: submitData.target[2].value,
     password: submitData.target[4].value,
   };
-  if (userData.count < 5 || userData.count > 30) {
-    alert("최소5~30개 까지 가능합니다");
-    document.querySelector(".amount").value = 15;
+  //2. Update user password
+  userPassword = userData.password;
+  userGoal = userData.goal;
+  makeBoard(userData.count);
+});
+
+function makeBoard(count) {
+  if ((boardWrap.style.visibility = "hidden")) {
+    boardWrap.style.visibility = "visible";
+    if (count < 5 || count > 30) {
+      alert("최소5~30개 까지 가능합니다");
+      document.querySelector(".amount").value = 15;
+    } else {
+      buildDiv(count);
+      background(userGoal);
+
+      const userForm = document.querySelector(".create-menu");
+      userForm.style.display = "none"; //hide menu
+    }
   } else {
-    buildDiv(userData.count);
-    background(userData.goal);
-    const userForm = document.querySelector(".create-menu");
-    userForm.style.display = "none"; //hide menu
+    console.log("error");
   }
 }
 
-
-const boardWrap = document.getElementById("board-wrap");
 function background(title) {
   if (title === "") {
     boardWrap.style.backgroundColor = "white";
@@ -117,6 +123,23 @@ function buildDiv(count) {
 
 const menuButtonsWrap = document.querySelector(".menu-buttons");
 
+function callPwChecker() {
+  const passwordInput = document.querySelector(".get-password");
+  passwordInput.style.transform = "translateX(50%)";
+  boardWrap.style.filter = "grayscale(80%)";
+}
+
+const pwCheckBtn = document.querySelector(".pwCheck");
+pwCheckBtn.addEventListener("click", (e)=>{
+  e.preventDefault();
+  console.log(e);
+  if (Number(userPassword) === Number(checkPassword)) {
+    addSticker();
+  } else {
+    alert("비밀번호가 맞지 않아요");
+  }
+})
+
 //add a sticker button to background.
 function addBtn() {
   const newBtn = document.createElement("button");
@@ -127,7 +150,7 @@ function addBtn() {
   returnBtn.innerText = "Return";
   menuButtonsWrap.prepend(newBtn, returnBtn);
   //event listener for button
-  newBtn.addEventListener("click", addSticker);
+  newBtn.addEventListener("click", callPwChecker);
   returnBtn.addEventListener("click", () => {
     window.location.reload();
   });
