@@ -24,7 +24,7 @@
             <input class="amount" type="number" value="15" min="5" max="30" />
             <button class="down" value="down">-</button>
             <label for="password">비밀번호 (부모님용, 최대 4자)</label>
-            <input class="password" type="password" maxlength="4">
+            <input class="password" type="password" maxlength="4" aria-required="true">
             <button class="start-btn" type="submit">Start ⏎</button>
         </form>
     </div>
@@ -35,9 +35,9 @@
     </div>
     <div class="get-password">
         <button type="reset" class="close">X</button>
-        <label for="pwCheck">비밀번호를 입력해주세요.</label>
-        <input type="password" class="pwCheck" id="pwCheck" maxlength="4" required>
-        <button type="submit">스티커 만들기</button>
+        <label for="pw-check">비밀번호를 입력해주세요.</label>
+        <input type="password" id="pw-check" maxlength="4" autofocus>
+        <button type="submit" class="pw-check-btn">스티커 만들기</button>
     </div>
 
     <script src="app.js"></script>

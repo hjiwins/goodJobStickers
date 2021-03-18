@@ -100,21 +100,20 @@ function background(title) {
 }
 
 //make blank holder according to user's total sticker input
-function buildDiv(count) {
+async function buildDiv(count) {
   stickerHolders = count; //update sticker holder amount
-  const boardGrid = document.createElement("div"); //create new board div
-  boardGrid.className = "board";
-  boardWrap.append(boardGrid);
+
+  await makeElement("div", "board", boardWrap);
+  const boardGrid = document.querySelector(".board");
 
   //make empty sticker holders.
-  for (let i = 1; i <= count; i++) {
-    const holderWrap = document.createElement("div"); //create new board div
-    holderWrap.className = "holder";
-    boardGrid.append(holderWrap);
-    const stickerNumber = i;
-    holderWrap.append(stickerNumber);
+  for (let i = 0; i < count; i++) {
+    makeElement("div", "holder", boardGrid);
+    const holderWrap = document.querySelectorAll(".holder");
+    holderWrap[i].innerText = i+1;
   }
   const mainGrapeImage = new Image();
+  mainGrapeImage.className = "main-grape"
   mainGrapeImage.src = "/images/main-grape.png";
   boardWrap.append(mainGrapeImage);
 
@@ -123,37 +122,57 @@ function buildDiv(count) {
 
 const menuButtonsWrap = document.querySelector(".menu-buttons");
 
+const passwordInput = document.querySelector(".get-password");
 function callPwChecker() {
-  const passwordInput = document.querySelector(".get-password");
-  passwordInput.style.transform = "translateX(50%)";
-  boardWrap.style.filter = "grayscale(80%)";
+  if ((passwordInput.style.visibility = "hidden")) {
+    passwordInput.style.visibility = "visible";
+    passwordInput.style.transform = "translateX(50%)";
+    boardWrap.style.filter = "grayscale(80%)";
+  } else {
+    console.log("error");
+  }
 }
 
-const pwCheckBtn = document.querySelector(".pwCheck");
-pwCheckBtn.addEventListener("click", (e)=>{
+const pwCheckBtn = document.querySelector(".pw-check-btn");
+pwCheckBtn.addEventListener("click", (e) => {
   e.preventDefault();
-  console.log(e);
+  checkPassword = document.getElementById("pw-check").value;
   if (Number(userPassword) === Number(checkPassword)) {
     addSticker();
   } else {
     alert("비밀번호가 맞지 않아요");
   }
-})
+});
+
+const closeButton = document.querySelector(".close");
+closeButton.addEventListener("click", closeForm);
+function closeForm() {
+  passwordInput.style.transform = "translateX(-500px)";
+  passwordInput.style.visibility = "hidden";
+  boardWrap.style.filter = null;
+}
 
 //add a sticker button to background.
-function addBtn() {
-  const newBtn = document.createElement("button");
-  newBtn.className = "addBtn";
-  newBtn.innerText = "Good Job!";
-  const returnBtn = document.createElement("button");
-  returnBtn.className = "returnBtn";
-  returnBtn.innerText = "Return";
-  menuButtonsWrap.prepend(newBtn, returnBtn);
+async function addBtn() {
+  await makeElement("button", "addBtn", menuButtonsWrap);
   //event listener for button
-  newBtn.addEventListener("click", callPwChecker);
+  const addStickerBtn = document.querySelector(".addBtn");
+  addStickerBtn.innerText = "Good Job!";
+  addStickerBtn.addEventListener("click", callPwChecker);
+
+  await makeElement("button", "returnBtn", menuButtonsWrap);
+  //event listener for button
+  const returnBtn = document.querySelector(".returnBtn");
+  returnBtn.innerText = "Return";
   returnBtn.addEventListener("click", () => {
     window.location.reload();
   });
+}
+
+function makeElement(element, className, location) {
+  const newElement = document.createElement(element);
+  newElement.className = className;
+  location.append(newElement);
 }
 
 //add draggable stickers
@@ -167,6 +186,7 @@ function addSticker() {
     alert(`스티커판 보다 스티커가 많아요!😱`);
   } else {
     newStickers.append(sticker);
+    closeForm();
   }
 }
 
